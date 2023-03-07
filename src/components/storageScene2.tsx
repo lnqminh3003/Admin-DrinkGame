@@ -15,7 +15,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const storage = getStorage();
-const storageRef = ref(storage,"photo-1566895291281-ea63efd4bdbc.jpeg");
 
 
 export default function StorageScene2() {
@@ -57,9 +56,9 @@ export default function StorageScene2() {
   
     return (
       <div>
-        <p className="ml-8 mb-3 font-bold text-2xl">BACKGROUND SCENE 2</p>
-        <div className="ml-20 flex items-center justify-center w-36 h-48 md:w-72 md:h-96">
-            <div className="flex items-center justify-center w-36 h-48 md:w-72 md:h-96">
+        <p className="ml-8 mb-3 font-bold text-2xl">BACKGROUND SCENE 2 (9:16)</p>
+        <div className="ml-20 flex items-center justify-center w-36 h-48 md:w-72 md:h-128">
+            <div className="flex items-center justify-center w-36 h-48 md:w-72 md:h-128">
                 <label className="rounded-lg items-center justify-center flex flex-col w-full h-full border-4 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
                   {blob ? (
                     <img
