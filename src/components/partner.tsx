@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { initializeApp } from "firebase/app";
-import {getStorage, getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import {getStorage, getDownloadURL, ref as ref_storage, uploadBytes, FirebaseStorage } from "firebase/storage";
+import { getDatabase ,  ref as ref_database, set, update } from "firebase/database";
+import { v4 as uuid } from 'uuid';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDutQ3shZzF17DjRqvikORibJLRbZTGk10",
@@ -14,6 +16,9 @@ const firebaseConfig = {
     const app = initializeApp(firebaseConfig);
     const storage = getStorage();
 
+    const db = getDatabase();
+    
+
 const Partner =()=>{
     const [partner,setPartner] = useState("");
     const [file, setFile] = useState<any | null>(null);
@@ -21,20 +26,31 @@ const Partner =()=>{
     const [success,setSuccess] = useState(false)
 
     const onSubmitPartner =()=>{
-        console.log(partner)
-        setPartner("")
+        // if (file == null) {
+        //     return;
+        // }
 
-        if (file == null) {
-            return;
-          }
-          
-          const fileRef = ref(storage,`/partner/${partner}`);
+
+        const fileRef =  ref_storage(storage,`/partner/${partner}`);
 
           uploadBytes(fileRef, file)
                 .then((snapshot) => {
                   getDownloadURL(snapshot.ref)
                     .then((url) => {
-                    //   setSuccess(true);
+                        const unique_id = uuid();
+                        set(ref_database(db, `partner/`+ unique_id), {
+                            namePartner : partner,
+                            url : url
+                        })
+                        .then(()=>{
+                            setSuccess(true);
+                            setPartner("") 
+                            setBlob(undefined) 
+                        })
+                            .catch((error)=>{
+                            console.log(error);
+                        });
+
                     })
                     .catch((err) => {
                       console.log("get file url failed:", err);
@@ -43,6 +59,10 @@ const Partner =()=>{
                 .catch((err) => {
                   console.log("upload file failed:", err);
                 });
+    }
+
+    const okButton =()=>{
+        setSuccess(false)
     }
     return(
         <div>
@@ -143,7 +163,7 @@ const Partner =()=>{
                     </p>
                   </div>
                   <div className="flex items-center p-6 space-x-2  rounded-b dark:border-gray-600">
-                    <button onClick={()=>setSuccess(false)}
+                    <button onClick={okButton}
                       data-modal-toggle="defaultModal"
                       type="button"
                       className="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -159,3 +179,4 @@ const Partner =()=>{
 }
 
 export default Partner;
+

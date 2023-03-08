@@ -26,14 +26,6 @@ export default function StorageScene1() {
 
     let backgroundScene1 = "backgroundScene1";
 
-    // getDownloadURL(storageRef)
-    // .then((url) => {
-    //         setAnh(url);
-    // })
-    // .catch((error) => {
-    //     console.log(error);
-    // });
-
   const onSubmit = () => {
     if (file == null) {
       return;
@@ -45,6 +37,7 @@ export default function StorageScene1() {
             getDownloadURL(snapshot.ref)
               .then((url) => {
                 setSuccess(true);
+                setBlob("")
               })
               .catch((err) => {
                 console.log("get file url failed:", err);

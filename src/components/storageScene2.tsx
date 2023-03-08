@@ -44,6 +44,7 @@ export default function StorageScene2() {
             getDownloadURL(snapshot.ref)
               .then((url) => {
                 setSuccess(true);
+                setBlob("")
               })
               .catch((err) => {
                 console.log("get file url failed:", err);
