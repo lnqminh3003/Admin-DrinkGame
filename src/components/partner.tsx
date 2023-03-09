@@ -66,7 +66,7 @@ const Partner =()=>{
     }
     return(
         <div>
-        <p className="mt-10 mb-7 text-emerald-700 text-center md:text-3xl text-2xl font-bold">UPLOAD PARTNER</p>
+        <p className="mt-10 mb-7 text-cyan-900 text-center md:text-3xl text-2xl font-bold">UPLOAD PARTNER</p>
         <div className="ml-14 items-center w-72 h-72 md:w-72 md:h-72">
             <div className="items-center w-72 h-72 md:w-72 md:h-72">
                 <label className="mb-4 rounded-lg items-center justify-center flex flex-col w-full h-full border-4 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-300">

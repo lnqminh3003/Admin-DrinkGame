@@ -2,6 +2,8 @@ import Link from "next/link";
 import {getStorage, getDownloadURL, ref, uploadBytes, listAll } from "firebase/storage";
 import { initializeApp } from "firebase/app";
 import { useEffect, useState } from 'react';
+import { getDatabase ,  ref as ref_database, set, update, child, get } from "firebase/database";
+import PartnerHomePage from "./partnerHomePage";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDutQ3shZzF17DjRqvikORibJLRbZTGk10",
@@ -15,6 +17,7 @@ const firebaseConfig = {
   
   const app = initializeApp(firebaseConfig);
   const storage = getStorage();
+  const db = getDatabase();
 
   const storageRefImage = ref(storage,"image");
 
@@ -37,21 +40,22 @@ const HomePage =()=>{
 
     return(
         <div>
-            <p className="mt-10 mb-7 text-emerald-700 text-center md:text-3xl text-2xl font-bold">REVIEW CURRENT BACKGROUND</p>
+            <p className="mt-10 mb-7 text-cyan-900 text-center md:text-3xl text-2xl font-bold">REVIEW CURRENT BACKGROUND</p>
             <div className="flex justify-evenly">
                 <div className="flex-row">
-                    <p className="mt-4 mb-4 text-center md:text-xl text-sm font-semibold">
+                    <p className="mt-4 mb-4 text-center md:text-lg text-sm font-semibold">
                         BACKGROUND SCENE 1
                     </p>
                     {bg.length != 0 && <img className="w-36 h-76 md:w-72 md:h-128" src={bg[0]}></img>}
                 </div>
                 <div className="flex-row">
-                    <p className="mt-4 mb-4 text-center md:text-xl text-sm font-semibold">
+                    <p className="mt-4 mb-4 text-center md:text-lg text-sm font-semibold">
                         BACKGROUND SCENE 2
                     </p>
                     {bg.length != 0 && <img className="w-36 h-76 md:w-72 md:h-128" src={bg[1]}></img>}
                 </div>
             </div>
+            <PartnerHomePage/>
         </div>
     )
 }
