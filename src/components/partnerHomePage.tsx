@@ -21,7 +21,7 @@ const firebaseConfig = {
   const storageRefImage = ref(storage,"partner");
 
 const PartnerHomePage =()=>{
-    const[pn, setPn] = useState<any>()
+    const[pn, setPn] = useState([{}])
     
     useEffect(() => {
         // listAll(storageRefImage)
@@ -38,30 +38,28 @@ const PartnerHomePage =()=>{
 
         get(child(ref_database(db), `partner`)).then((snapshot) => {
             if (snapshot.exists()) {
-                console.log(Object.values(snapshot.val()));
-                console.log(pn)
+                setPn(Object.values(snapshot.val()))
             } else {
               console.log("No data available");
             }
           }).catch((error) => {
             console.error(error);
           });
-    }, []);
+    }, [pn]);
 
     return(
         <div className="mb-10">
             <p className="text-cyan-900 mt-10 mb-7  text-center md:text-3xl text-2xl font-bold">REVIEW CURRENT PARTNERS</p>
-            <div className="grid grid-cols-3 gap-4 mb-4">
-                <div className="flex-row ">
-                    {/* {bg.map((anh) => (
-                        <div key={anh}>
-                            <p className="mt-4 mb-4 text-center md:text-lg text-sm font-semibold">
-                            Name
-                            </p>
-                            {bg.length != 0 && <img className="mx-auto w-28 h-28 md:w-40 md:h-40" src={bg[0]}></img>}
+            <div className="flex flex-col items-center ">
+                    {pn.map((anh:any) => (
+                        <div key={anh} className="flex justify-around">
+                            {pn.length != 0 && <img className=" w-20 h-20 md:w-32 md:h-32" src={anh["urlImage"]}></img>}
+                            <div className="md:w-52 w-32 mb-10  grid place-items-center md:text-lg text-sm font-semibold">
+                                {anh["namePartner"]}
+                            </div>
+                            {pn.length != 0 && <img className="mb-10 w-20 h-20 md:w-32 md:h-32" src={anh["urlVoucher"]}></img>}
                         </div>
-                    ))}  */}
-                </div>
+                    ))} 
             </div>
         </div>
     )

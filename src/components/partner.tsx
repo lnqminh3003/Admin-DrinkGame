@@ -23,33 +23,57 @@ const Partner =()=>{
     const [partner,setPartner] = useState("");
     const [file, setFile] = useState<any | null>(null);
     const [blob, setBlob] = useState<string | undefined>();
+
+    const [file2, setFile2] = useState<any | null>(null);
+    const [blob2, setBlob2] = useState<string | undefined>();
+
     const [success,setSuccess] = useState(false)
 
     const onSubmitPartner =()=>{
-        // if (file == null) {
-        //     return;
-        // }
-
+        if (file == null) {
+            return;
+        }
+        else if(file2 == null)
+        {
+          return;
+        }
+        
+        var voucherName = `${partner}_voucher`;
 
         const fileRef =  ref_storage(storage,`/partner/${partner}`);
+        const fileRef2 =  ref_storage(storage,`/voucher/${voucherName}`);
 
           uploadBytes(fileRef, file)
                 .then((snapshot) => {
                   getDownloadURL(snapshot.ref)
                     .then((url) => {
-                        const unique_id = uuid();
-                        set(ref_database(db, `partner/`+ unique_id), {
-                            namePartner : partner,
-                            url : url
-                        })
-                        .then(()=>{
-                            setSuccess(true);
-                            setPartner("") 
-                            setBlob(undefined) 
-                        })
-                            .catch((error)=>{
-                            console.log(error);
-                        });
+
+                      uploadBytes(fileRef2, file2)
+                      .then((snapshot) => {
+                        getDownloadURL(snapshot.ref)
+                          .then((url2) => {
+      
+                              const unique_id = uuid();
+                              set(ref_database(db, `partner/`+ unique_id), {
+                                  namePartner : partner,
+                                  urlImage : url,
+                                  urlVoucher : url2
+                              })
+                              .then(()=>{
+                                  setSuccess(true);
+                                  setPartner("") 
+                                  setBlob(undefined) 
+                                  setBlob2(undefined) 
+                              })
+                              .catch((error)=>{
+                                  console.log(error);
+                              });
+      
+                          })
+                      })
+                      .catch((err) => {
+                        console.log("upload file failed:", err);
+                      });
 
                     })
                     .catch((err) => {
@@ -59,6 +83,8 @@ const Partner =()=>{
                 .catch((err) => {
                   console.log("upload file failed:", err);
                 });
+
+                
     }
 
     const okButton =()=>{
@@ -67,8 +93,10 @@ const Partner =()=>{
     return(
         <div>
         <p className="mt-10 mb-7 text-cyan-900 text-center md:text-3xl text-2xl font-bold">UPLOAD PARTNER</p>
+        
         <div className="ml-14 items-center w-72 h-72 md:w-72 md:h-72">
             <div className="items-center w-72 h-72 md:w-72 md:h-72">
+            <p className="font-bold mb-3 md:text-xl">Logo partner</p>
                 <label className="mb-4 rounded-lg items-center justify-center flex flex-col w-full h-full border-4 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
                   {blob ? (
                     <img
@@ -94,7 +122,7 @@ const Partner =()=>{
                       </svg>
 
                       <p className="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
-                        Upload a file
+                        Logo Partner
                       </p>
                     </div>
                   )}
@@ -124,6 +152,69 @@ const Partner =()=>{
                         };
 
                         setFile(ev.target.files![0]);
+                      } catch {
+                        console.log("Yo yo, đi nấu đá không ae?");
+                      }
+                    }}
+                  />
+                </label>
+
+                <p className="font-bold mb-3 md:text-xl">QR Voucher</p>
+                <label className="mb-4 rounded-lg items-center justify-center flex flex-col w-full h-full border-4 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
+                  {blob2 ? (
+                    <img
+                      className="object-cover items-center justify-center w-full h-full"
+                      src={blob2}
+                      alt=""
+                    ></img>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-8 h-8 text-gray-400 group-hover:text-gray-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                        />
+                      </svg>
+
+                      <p className="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
+                        QR Voucher
+                      </p>
+                    </div>
+                  )}
+
+                  <input
+                    type="file"
+                    className="opacity-0 max-h-0"
+                    onChange={(ev) => {
+                      try {
+                        if (
+                          ev.target.files == null ||
+                          ev.target.files == undefined
+                        ) {
+                          return;
+                        }
+
+                        const reader = new window.FileReader();
+                        reader.readAsArrayBuffer(ev.target.files[0]);
+                        reader.onloadend = () => {
+                          const res = reader.result!;
+                          if (typeof res == "string") {
+                            return;
+                          }
+
+                          const blob = new Blob([res]);
+                          setBlob2(URL.createObjectURL(blob));
+                        };
+
+                        setFile2(ev.target.files![0]);
                       } catch {
                         console.log("Yo yo, đi nấu đá không ae?");
                       }
