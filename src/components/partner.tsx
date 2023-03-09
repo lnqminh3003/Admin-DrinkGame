@@ -159,7 +159,7 @@ const Partner =()=>{
                   />
                 </label>
 
-                <p className="font-bold mb-3 md:text-xl">QR Voucher</p>
+                <p className="font-bold mb-3 md:text-xl">Voucher</p>
                 <label className="mb-4 rounded-lg items-center justify-center flex flex-col w-full h-full border-4 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
                   {blob2 ? (
                     <img
@@ -185,7 +185,7 @@ const Partner =()=>{
                       </svg>
 
                       <p className="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
-                        QR Voucher
+                        Voucher
                       </p>
                     </div>
                   )}

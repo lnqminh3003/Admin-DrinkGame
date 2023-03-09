@@ -3,6 +3,7 @@ import {getStorage, getDownloadURL, ref, uploadBytes, listAll } from "firebase/s
 import { initializeApp } from "firebase/app";
 import { useEffect, useState } from 'react';
 import { getDatabase ,  ref as ref_database, set, update, child, get } from "firebase/database";
+import PartnerCard from "./partnerCard";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDutQ3shZzF17DjRqvikORibJLRbZTGk10",
@@ -24,18 +25,6 @@ const PartnerHomePage =()=>{
     const[pn, setPn] = useState([{}])
     
     useEffect(() => {
-        // listAll(storageRefImage)
-        // .then(async (res) => {
-        // const { items } = res;
-        // const urls = await Promise.all(
-        //     items.map((item) => getDownloadURL(item))
-        // );
-        //     setBg(urls)
-        // })
-        // .catch((error) => {
-        //     console.log(error)
-        // });
-
         get(child(ref_database(db), `partner`)).then((snapshot) => {
             if (snapshot.exists()) {
                 setPn(Object.values(snapshot.val()))
@@ -52,12 +41,10 @@ const PartnerHomePage =()=>{
             <p className="text-cyan-900 mt-10 mb-7  text-center md:text-3xl text-2xl font-bold">REVIEW CURRENT PARTNERS</p>
             <div className="flex flex-col items-center ">
                     {pn.map((anh:any) => (
-                        <div key={anh} className="flex justify-around">
-                            {pn.length != 0 && <img className=" w-20 h-20 md:w-32 md:h-32" src={anh["urlImage"]}></img>}
-                            <div className="md:w-52 w-32 mb-10  grid place-items-center md:text-lg text-sm font-semibold">
-                                {anh["namePartner"]}
-                            </div>
-                            {pn.length != 0 && <img className="mb-10 w-20 h-20 md:w-32 md:h-32" src={anh["urlVoucher"]}></img>}
+                        <div>
+                            {pn.length != 0 && 
+                                <PartnerCard name={anh["namePartner"]} urlImage={anh["urlImage"]} urlVoucher={anh["urlVoucher"]}/>
+                            }
                         </div>
                     ))} 
             </div>
