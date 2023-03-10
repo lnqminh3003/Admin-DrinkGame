@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {getStorage, getDownloadURL, ref as ref_storage, uploadBytes, listAll } from "firebase/storage";
+import {getStorage, getDownloadURL, ref as ref_storage, deleteObject,uploadBytes, listAll } from "firebase/storage";
 import { initializeApp } from "firebase/app";
 import { useEffect, useState } from 'react';
 import { getDatabase ,  ref , set, update, child, get, orderByChild, remove } from "firebase/database";
@@ -20,8 +20,6 @@ const storage = getStorage();
 const db = getDatabase();
 
 
-
-
 const PartnerCard =({ name, urlImage, urlVoucher }: {urlVoucher:string, urlImage: string , name:string}) =>{
     const[anh,setAnh] = useState(false)
     const[success, setSuccess]= useState(false)
@@ -29,11 +27,24 @@ const PartnerCard =({ name, urlImage, urlVoucher }: {urlVoucher:string, urlImage
     const DeleteAnh =()=>{
         var refPartner = ref(db,`partner/${name}`)
         set(refPartner, {
-            
         })
         .then(()=>{
-            setSuccess(true);
-            setAnh(false)
+            const httpsReference = ref_storage(storage, urlImage);
+            deleteObject(httpsReference)
+            .then(() => {
+                const r = ref_storage(storage, urlVoucher);
+                deleteObject(r)
+                .then(() => {
+                    setSuccess(true);
+                    setAnh(false);
+                })
+                .catch((error) => {
+                    console.log(error)
+                });
+            })
+            .catch((error) => {
+                console.log(error)
+            });
         })
         .catch((error)=>{
             console.log(error);
