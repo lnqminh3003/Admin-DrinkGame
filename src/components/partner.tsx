@@ -54,7 +54,7 @@ const Partner =()=>{
                           .then((url2) => {
       
                               const unique_id = uuid();
-                              set(ref_database(db, `partner/`+ unique_id), {
+                              set(ref_database(db, `partner/`+ partner), {
                                   namePartner : partner,
                                   urlImage : url,
                                   urlVoucher : url2

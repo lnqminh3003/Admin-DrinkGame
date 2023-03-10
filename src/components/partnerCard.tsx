@@ -1,14 +1,43 @@
 import Link from "next/link";
-import {getStorage, getDownloadURL, ref, uploadBytes, listAll } from "firebase/storage";
+import {getStorage, getDownloadURL, ref as ref_storage, uploadBytes, listAll } from "firebase/storage";
 import { initializeApp } from "firebase/app";
 import { useEffect, useState } from 'react';
-import { getDatabase ,  ref as ref_database, set, update, child, get } from "firebase/database";
+import { getDatabase ,  ref , set, update, child, get, orderByChild, remove } from "firebase/database";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDutQ3shZzF17DjRqvikORibJLRbZTGk10",
+    authDomain: "drink-game-29b92.firebaseapp.com",
+    databaseURL: "https://drink-game-29b92-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "drink-game-29b92",
+    storageBucket: "drink-game-29b92.appspot.com",
+    messagingSenderId: "194346987215",
+    appId: "1:194346987215:web:e4acbd28e9e7dc211bd1ba"
+  };
+
+const app = initializeApp(firebaseConfig);
+const storage = getStorage();
+
+const db = getDatabase();
+
+
+
 
 const PartnerCard =({ name, urlImage, urlVoucher }: {urlVoucher:string, urlImage: string , name:string}) =>{
     const[anh,setAnh] = useState(false)
     const[success, setSuccess]= useState(false)
-    const DeleteAnh =()=>{
 
+    const DeleteAnh =()=>{
+        var refPartner = ref(db,`partner/${name}`)
+        set(refPartner, {
+            
+        })
+        .then(()=>{
+            setSuccess(true);
+            setAnh(false)
+        })
+        .catch((error)=>{
+            console.log(error);
+        });
     }
 
     return (
