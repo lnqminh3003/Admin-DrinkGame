@@ -16,7 +16,6 @@ const firebaseConfig = {
   const storage = getStorage();
 
 const OneCard =()=>{
-    const [anh,setAnh] = useState("")
     const [file, setFile] = useState<any | null>(null);
     const [blob, setBlob] = useState<string | undefined>();
     const [success,setSuccess] = useState(false)
@@ -49,6 +48,7 @@ const OneCard =()=>{
 
     return(
         <div>
+            <p className="ml-7 mb-3 font-bold text-2xl">Mặt sau tấm card (9:16)</p>
             <div className="ml-20 mb-7 flex items-center justify-center w-36 h-48 md:w-72 md:h-128">
             <div className="flex items-center justify-center w-36 h-48 md:w-72 md:h-128">
                 <label className="rounded-lg items-center justify-center flex flex-col w-full h-full border-4 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-300">

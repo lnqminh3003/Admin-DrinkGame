@@ -18,7 +18,6 @@ const storage = getStorage();
 
 
 export default function StorageScene2() {
-    const[anh,setAnh] = useState("")
     const [file, setFile] = useState<any | null>(null);
     const [blob, setBlob] = useState<string | undefined>();
     const [success,setSuccess] = useState(false)
