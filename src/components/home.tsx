@@ -4,6 +4,7 @@ import { initializeApp } from "firebase/app";
 import { useEffect, useState } from 'react';
 import { getDatabase ,  ref as ref_database, set, update, child, get } from "firebase/database";
 import PartnerHomePage from "./partnerHomePage";
+import CardHomePage from "./cardHomePage";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDutQ3shZzF17DjRqvikORibJLRbZTGk10",
@@ -55,6 +56,7 @@ const HomePage =()=>{
                     {bg.length != 0 && <img className="w-36 h-76 md:w-72 md:h-128" src={bg[1]}></img>}
                 </div>
             </div>
+            <CardHomePage/>
             <PartnerHomePage/>
         </div>
     )

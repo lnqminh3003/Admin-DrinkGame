@@ -20,7 +20,7 @@ const storage = getStorage();
 export default function StorageScene1() {
     const [file, setFile] = useState<any | null>(null);
     const [blob, setBlob] = useState<string | undefined>();
-    const [success,setSuccess] = useState(true)
+    const [success,setSuccess] = useState(false)
     const [loading,setLoading] = useState(false)
 
     let backgroundScene1 = "backgroundScene1";
