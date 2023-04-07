@@ -64,7 +64,7 @@ const PartnerCard =({ name, urlImage, urlVoucher }: {urlVoucher:string, urlImage
             </button>
              
              {anh &&
-                <div className="grid place-items-center bg-neutral-700 bg-opacity-60 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+                <div className="grid place-items-center bg-neutral-700 bg-opacity-60 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal min-h-screen">
                 <div className="relative bg-pink-100 rounded-lg shadow dark:bg-gray-700 md:w-bg w-80 grid place-items-center">
                     <div  className="mt-6 mb-2 items-center text-2xl font-semibold">
                         {name}
@@ -98,8 +98,8 @@ const PartnerCard =({ name, urlImage, urlVoucher }: {urlVoucher:string, urlImage
               </div>
             }
             {success && 
-                <div className="grid place-items-center bg-neutral-700 bg-opacity-40 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-                <div className="relative bg-white rounded-lg shadow  w-96 grid place-items-center">
+                <div className="grid place-items-center bg-neutral-700 bg-opacity-40 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal min-h-screen">
+                <div className="relative bg-white rounded-lg shadow w-72 md:w-96 grid place-items-center">
                   <div className="flex items-start p-4 border-b rounded-t dark:border-gray-600">
                     <img
                       src="https://cdn-icons-png.flaticon.com/512/148/148767.png"

@@ -20,7 +20,7 @@ const storage = getStorage();
 export default function StorageScene1() {
     const [file, setFile] = useState<any | null>(null);
     const [blob, setBlob] = useState<string | undefined>();
-    const [success,setSuccess] = useState(false)
+    const [success,setSuccess] = useState(true)
     const [loading,setLoading] = useState(false)
 
     let backgroundScene1 = "backgroundScene1";
@@ -125,7 +125,7 @@ export default function StorageScene1() {
             
             {success && 
                 <div className="grid place-items-center bg-neutral-700 bg-opacity-40 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-                <div className="relative bg-white rounded-lg shadow  w-96 grid place-items-center">
+                <div className="relative bg-white rounded-lg shadow w-72 md:w-96 grid place-items-center">
                   <div className="flex items-start p-4 border-b rounded-t dark:border-gray-600">
                     <img
                       src="https://cdn-icons-png.flaticon.com/512/148/148767.png"
@@ -156,7 +156,7 @@ export default function StorageScene1() {
 
             {loading && 
                 <div className="grid place-items-center bg-neutral-700 bg-opacity-40 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-                <div className="relative bg-white rounded-lg shadow  w-96 grid place-items-center">
+                <div className="relative bg-white rounded-lg shadow w-72 md:w-96 grid place-items-center">
                   <div className="flex items-start p-4 border-b rounded-t dark:border-gray-600">
                     <h3 className="text-xl font-semibold pt-2 pl-4 text-gray-900 ">
                       Upload image

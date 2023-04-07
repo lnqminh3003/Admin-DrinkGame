@@ -2,6 +2,7 @@ import Navigation from "@/components/navigation";
 import OneCard from "@/components/GameCard";
 import GameCardLevel1 from "@/components/GamecardLevel1";
 import GameCardLevel2 from "@/components/GamecardLevel2";
+import GameCardLevel3 from "@/components/GamecardLevel3";
 
 const GameCard = ()=>{
     return(
@@ -11,6 +12,7 @@ const GameCard = ()=>{
             <OneCard />
             <GameCardLevel1 />
             <GameCardLevel2/>
+            <GameCardLevel3/>
         </div>
     )
 } 
