@@ -41,39 +41,39 @@ const CardHomePage =()=>{
             <p className=" mb-4 text-cyan-900 text-center md:text-2xl text-xl font-bold">LEVEL 1 </p>
             <div className="flex justify-evenly">
                 <div className="flex-row">
-                    {bg.length != 0 && <img className="w-36 h-76 md:w-72 md:h-128" src={bg[1]}></img>}
+                    {bg.length != 0 && <img className="w-36 h-76 md:w-72 md:h-128" src={bg[2]}></img>}
                 </div>
                 <div className="flex-row">
-                    {bg.length != 0 && <img className="w-36 h-76 md:w-72 md:h-128" src={bg[2]}></img>}
+                    {bg.length != 0 && <img className="w-36 h-76 md:w-72 md:h-128" src={bg[3]}></img>}
                 </div>
             </div>
 
             <p className=" mt-10 mb-4 text-cyan-900 text-center md:text-2xl text-xl font-bold">LEVEL 2 </p>
             <div className="flex flex-wrap justify-around">
                 <div className="flex-row">
-                    {bg.length != 0 && <img className="mb-3 w-36 h-76 md:w-72 md:h-128" src={bg[3]}></img>}
-                </div>
-                <div className="flex-row">
-                    {bg.length != 0 && <img className="w-36 h-76 md:w-72 md:h-128" src={bg[4]}></img>}
+                    {bg.length != 0 && <img className="mb-3 w-36 h-76 md:w-72 md:h-128" src={bg[4]}></img>}
                 </div>
                 <div className="flex-row">
                     {bg.length != 0 && <img className="w-36 h-76 md:w-72 md:h-128" src={bg[5]}></img>}
+                </div>
+                <div className="flex-row">
+                    {bg.length != 0 && <img className="w-36 h-76 md:w-72 md:h-128" src={bg[6]}></img>}
                 </div>
             </div>
 
             <p className=" mt-10 mb-4 text-cyan-900 text-center md:text-2xl text-xl font-bold">LEVEL 3 </p>
             <div className="flex flex-wrap justify-around">
                 <div className="flex-row">
-                    {bg.length != 0 && <img className="mb-3 w-36 h-76 md:w-72 md:h-128" src={bg[6]}></img>}
-                </div>
-                <div className="flex-row">
-                    {bg.length != 0 && <img className="w-36 h-76 md:w-72 md:h-128" src={bg[7]}></img>}
+                    {bg.length != 0 && <img className="mb-3 w-36 h-76 md:w-72 md:h-128" src={bg[7]}></img>}
                 </div>
                 <div className="flex-row">
                     {bg.length != 0 && <img className="w-36 h-76 md:w-72 md:h-128" src={bg[8]}></img>}
                 </div>
                 <div className="flex-row">
                     {bg.length != 0 && <img className="w-36 h-76 md:w-72 md:h-128" src={bg[9]}></img>}
+                </div>
+                <div className="flex-row">
+                    {bg.length != 0 && <img className="w-36 h-76 md:w-72 md:h-128" src={bg[10]}></img>}
                 </div>
             </div>
         </div>

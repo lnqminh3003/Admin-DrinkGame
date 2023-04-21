@@ -59,8 +59,8 @@ export default function StorageScene2() {
   
     return (
       <div>
-        <p className="ml-8 mb-3 font-bold text-2xl">BACKGROUND SCENE 2 (9:16)</p>
-        <div className="ml-20 flex items-center justify-center w-36 h-48 md:w-72 md:h-128">
+        <p className="ml-8 mb-3 font-bold text-2xl">BACKGROUND SCREEN CHỌN GAME (9:16)</p>
+        <div className="ml-20 mb-3 flex items-center justify-center w-36 h-48 md:w-72 md:h-128">
             <div className="flex items-center justify-center w-36 h-48 md:w-72 md:h-128">
                 <label className="rounded-lg items-center justify-center flex flex-col w-full h-full border-4 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
                   {blob ? (

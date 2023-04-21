@@ -54,6 +54,13 @@ const Navigation =()=>{
                         Game Card
                       </Link>
                     </li>
+
+                    <li>
+                      <Link href={{ pathname: "../buttonGame" }} className="block py-2 pl-3 pr-4 hover:text-white 
+                       md:p-0 text-yellow-200">
+                        Button chọn game
+                      </Link>
+                    </li>
                     
 
                     

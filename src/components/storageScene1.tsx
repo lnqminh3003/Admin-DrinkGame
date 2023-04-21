@@ -50,7 +50,7 @@ export default function StorageScene1() {
   
     return (
       <div>
-        <p className="ml-7 mb-3 font-bold text-2xl">BACKGROUND SCENE 1 (9:16)</p>
+        <p className="ml-7 mb-3 font-bold text-2xl">BACKGROUND MAIN GAME SCREEN (9:16)</p>
         <div className="ml-20 mb-7 flex items-center justify-center w-36 h-48 md:w-72 md:h-128">
             <div className="flex items-center justify-center w-36 h-48 md:w-72 md:h-128">
                 <label className="rounded-lg items-center justify-center flex flex-col w-full h-full border-4 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
@@ -155,7 +155,7 @@ export default function StorageScene1() {
             }
 
             {loading && 
-                <div className="grid place-items-center bg-neutral-700 bg-opacity-40 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+                <div className="grid place-items-center bg-neutral-700 bg-opacity-40 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal min-h-screen">
                 <div className="relative bg-white rounded-lg shadow w-72 md:w-96 grid place-items-center">
                   <div className="flex items-start p-4 border-b rounded-t dark:border-gray-600">
                     <h3 className="text-xl font-semibold pt-2 pl-4 text-gray-900 ">
